@@ -33,7 +33,7 @@ namespace Task2
 
             string s = sr.ReadToEnd();   //read input
             string[] arr = s.Split();   //Split text and put it into an array
-            for (int i = 0; i < 7; ++i)
+            for (int i = 0; i < arr.Length; ++i)
             {
                 int x = int.Parse(arr[i]);  
                 if (IsPrime(x) == true)   //check by using the function above
