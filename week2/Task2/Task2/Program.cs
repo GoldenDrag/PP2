@@ -41,9 +41,28 @@ namespace Task2
                     vs.Add(x);
                 }
             }
-            for (int i = 0; i < vs.Count; ++i)
+
+            string opath = @"C:\Users\Технодом\Documents\PP2\week2\Task2\Output.txt";
+            //Directory.CreateDirectory(folder);
+            //string output = "output.txt";
+            //folder = Path.Combine(folder, output);
+
+            if (!File.Exists(opath))
             {
-                Console.Write(vs[i] + " ");
+                File.Create(opath);
+            }
+            else
+            {
+                using (var tw = new StreamWriter(opath, true))
+                {
+                    for (int i = 0; i < vs.Count; ++i)
+                    {
+                        tw.Write(vs[i] + " ");
+                    }
+                    tw.Close();
+                }
+
+                return;
             }
         }
     }
