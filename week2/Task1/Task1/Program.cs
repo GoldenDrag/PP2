@@ -22,31 +22,15 @@ namespace Task1
             return part1.Equals(part2); //if they equal return true
         }
 
-        static void fileinfotest()
-        {
-            FileInfo fileinfo = new FileInfo(@"C:\Users\Технодом\Documents\PP2\week2\Task1\ababa.txt");
-            Console.WriteLine(fileinfo.Name);
-            Console.WriteLine(fileinfo.FullName);
-            Console.WriteLine(fileinfo.Directory);
-        }
-
-        static void directoryinfotest()
-        {
-            DirectoryInfo directoryinfo = new DirectoryInfo(@"C:\Users\Технодом\Documents\PP2\week2\Task1");
-            Console.WriteLine(directoryinfo.Name);
-            Console.WriteLine(directoryinfo.FullName);
-            Console.WriteLine(directoryinfo.Parent);
-        }
-
         static void Main(string[] args)
         {
-            string path = @"C:\Users\Технодом\Documents\PP2\week2\Task1\ababa.txt";
+            string path = @"C:\Users\Технодом\Documents\PP2\week2\Task1\ababa.txt";  //path to input
 
-            StreamReader sr = new StreamReader(path);
+            StreamReader sr = new StreamReader(path); //Read input
             string s = sr.ReadToEnd();
-            if (Palindrome(s) == true)
+            if (Palindrome(s) == true)  //check by function
             {
-                Console.WriteLine("Yes");
+                Console.WriteLine("Yes");  //output "Yes"
             }
         }
     }
