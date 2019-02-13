@@ -10,7 +10,7 @@ namespace Task2
     class Program
     {
 
-        static bool IsPrime (int x)
+        static bool IsPrime (int x)  //function to check whether number is prime
         {
             if (x < 2) return false;
 
@@ -26,34 +26,35 @@ namespace Task2
 
         static void Main(string[] args)
         {
-            List<int> vs = new List<int>();
-            string path = @"C:\Users\Технодом\Documents\PP2\week2\Task2\randomints.txt";
+            List<int> vs = new List<int>();   //container to store primes
+            string path = @"C:\Users\Технодом\Documents\PP2\week2\Task2\randomints.txt";  //path for input
 
-            StreamReader sr = new StreamReader(path);
+            StreamReader sr = new StreamReader(path);  //Create the input reader
 
-            string s = sr.ReadToEnd();
-            string[] arr = s.Split();
+            string s = sr.ReadToEnd();   //read input
+            string[] arr = s.Split();   //Split text and put it into an array
             for (int i = 0; i < 7; ++i)
             {
-                int x = int.Parse(arr[i]);
-                if (IsPrime(x) == true)
+                int x = int.Parse(arr[i]);  
+                if (IsPrime(x) == true)   //check by using the function above
                 {
                     vs.Add(x);
                 }
             }
+            sr.Close();
 
-            string opath = @"C:\Users\Технодом\Documents\PP2\week2\Task2\Output.txt";
+            string opath = @"C:\Users\Технодом\Documents\PP2\week2\Task2\Output.txt";  //path fo output
             //Directory.CreateDirectory(folder);
             //string output = "output.txt";
             //folder = Path.Combine(folder, output);
 
-            if (!File.Exists(opath))
+            if (!File.Exists(opath))   //if path doesn't exist create it;
             {
                 File.Create(opath);
             }
             else
             {
-                using (var tw = new StreamWriter(opath, true))
+                using (var tw = new StreamWriter(opath, true))  //if it does then write primes in
                 {
                     for (int i = 0; i < vs.Count; ++i)
                     {
