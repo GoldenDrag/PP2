@@ -43,12 +43,12 @@ namespace Task2
             }
             sr.Close();
 
-            string opath = @"C:\Users\Технодом\Documents\PP2\week2\Task2\Output.txt";  //path fo output
+            string opath = @"C:\Users\Технодом\Documents\PP2\week2\Task2\Output.txt";  //path for output
             //Directory.CreateDirectory(folder);
             //string output = "output.txt";
             //folder = Path.Combine(folder, output);
 
-            if (!File.Exists(opath))   //if path doesn't exist create it;
+            if (!File.Exists(opath))   //if file doesn't exist create it;
             {
                 File.Create(opath);
             }
