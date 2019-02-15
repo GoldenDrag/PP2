@@ -60,16 +60,16 @@ namespace Task1
             FSIMode curMode = FSIMode.DirectoryInfo;
 
             Stack<Layer> history = new Stack<Layer>();  //create a Stack
-            history.Push(l);
+            history.Push(l);  //fill the stack
 
-            //bool esc = false;
-            while (!esc)
+            bool esc = false;  //bool for run the loop
+            while (!esc)  
             {
                 if (curMode == FSIMode.DirectoryInfo)
                 {
-                    history.Peek().Draw();
+                    history.Peek().Draw();  //shows files
                 }
-                ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
+                ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();  //inter key batton that will move cursor
                 switch (consoleKeyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -78,13 +78,12 @@ namespace Task1
                     case ConsoleKey.DownArrow:
                         history.Peek().SelectedIndex++;
                         break;
-                    case ConsoleKey.Enter:
-                        int index = history.Peek().SelectedIndex;
-                        FileSystemInfo fsi = history.Peek().Content[index];
-                        if (fsi.GetType() == typeof(DirectoryInfo))
+                    case ConsoleKey.Enter: //goes further to the directory (if it is folder)
+                        int index = history.Peek().SelectedIndex;  //when we open a directory cursor goes on top of files which directory contains
+                        FileSystemInfo fsi = history.Peek().Content[index];  //"open" a directory/file
+                        if (fsi.GetType() == typeof(DirectoryInfo))  //if it is directory
                         {
                             curMode = FSIMode.DirectoryInfo;
-                            // DirectoryInfo d = (DirectoryInfo)fsi;
                             DirectoryInfo d = fsi as DirectoryInfo;
                             history.Push(new Layer
                             {
@@ -92,7 +91,7 @@ namespace Task1
                                 SelectedIndex = 0
                             });
                         }
-                        else
+                        else  //if it is file
                         {
                             curMode = FSIMode.File;
                             using (FileStream fs = new FileStream(fsi.FullName, FileMode.Open, FileAccess.Read))
@@ -107,7 +106,7 @@ namespace Task1
                             }
                         }
                         break;
-                    case ConsoleKey.Backspace:
+                    case ConsoleKey.Backspace:  //shuts directory or file
                         if (curMode == FSIMode.DirectoryInfo)
                         {
                             history.Pop();
@@ -118,7 +117,7 @@ namespace Task1
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                         break;
-                    case ConsoleKey.Escape:
+                    case ConsoleKey.Escape:  //shuts console
                         esc = true;
                         break;
                 }
