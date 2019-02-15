@@ -50,7 +50,7 @@ namespace Task1
         static void Main(string[] args)
         {
             DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Технодом\Documents\PP2\week2\Task3\gnome");  //path to directory that we are going to manage
-            Layer l = new Layer  //show a basic position for cursor
+            Layer l = new Layer 
             {
                 Content = dir.GetFileSystemInfos(),  
                 SelectedIndex = 0
