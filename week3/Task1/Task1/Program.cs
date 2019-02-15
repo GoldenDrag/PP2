@@ -117,6 +117,25 @@ namespace Task1
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                         break;
+                    case ConsoleKey.Delete:
+                        int x2 = history.Peek().SelectedIndex;
+                        FileSystemInfo fileSystemInfo2 = history.Peek().Content[x2];
+                        history.Peek().SelectedIndex--;
+                        if (fileSystemInfo2.GetType() == typeof(DirectoryInfo))
+                        {
+                            DirectoryInfo directoryInfo = fileSystemInfo2 as DirectoryInfo;
+                            Directory.Delete(fileSystemInfo2.FullName, true);
+                            history.Peek().Content = directoryInfo.Parent.GetFileSystemInfos();
+                        }
+                        else
+                        {
+                            FileInfo fileInfo = fileSystemInfo2 as FileInfo;
+                            File.Delete(fileSystemInfo2.FullName);
+                            history.Peek().Content = fileInfo.Directory.GetFileSystemInfos();
+                        }
+
+
+                        break;
                     case ConsoleKey.Escape:  //shuts console
                         esc = true;
                         break;
