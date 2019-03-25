@@ -8,17 +8,15 @@ namespace Task1
 {
     class Program
     {
-        public static bool Prime (int c)  //funtion for finding odds
+        public static bool Prime (int x)
         {
-            if (c < 2) return false;
+            if (x < 2) return false;
 
-            double s = Math.Sqrt(c);
-
-            for (int i = 2; i <= s; ++i)
+            double n = Math.Sqrt(x);
+            for (int i = 2; i <= n; ++i)
             {
-                if (c % i == 0) return false;
+                if (x % i == 0) return false;
             }
-
             return true;
         }
         static void Main(string[] args)

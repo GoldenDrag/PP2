@@ -54,7 +54,7 @@ namespace Task2
             }
             else
             {
-                using (var tw = new StreamWriter(opath, true))  //if it does then write primes in
+                using (var tw = new StreamWriter(opath, true))
                 {
                     for (int i = 0; i < vs.Count; ++i)
                     {
@@ -62,7 +62,6 @@ namespace Task2
                     }
                     tw.Close();
                 }
-
                 return;
             }
         }

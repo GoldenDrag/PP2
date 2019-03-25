@@ -24,6 +24,12 @@ namespace Task2
             this.name = name;
             this.id = id;
             this.year = ++year;
+
+        }
+
+        public int getid();
+        {
+            return id;
         }
 
         public string ToTring()
@@ -39,6 +45,8 @@ namespace Task2
             Student st2 = new Student("aaa", 18081139, 1);
             Console.WriteLine(st1);
             Console.WriteLine(st2);
+
+            Console.ReadKey();
         }
     }
 }

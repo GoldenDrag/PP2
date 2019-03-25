@@ -18,7 +18,7 @@ namespace Task4
             {
                 for (int j = 0; j < i; ++j)
                 {
-                    Console.Write("[*]");  //full this strings
+                    Console.Write("[*]");
                 }
                 Console.WriteLine();
             }
